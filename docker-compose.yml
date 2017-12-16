@@ -9,6 +9,9 @@ services:
     redis:
         image: redis:alpine
         container_name: redis
+        restart: always
+        ports:
+            - "6379:6379"
 
     web:
         image: nginx:latest
@@ -22,15 +25,17 @@ services:
         volumes:
             - ./www:/var/www/site
             - ./conf/nginx/site.template.conf:/etc/nginx/conf.d/site.template
+            - ./conf/nginx/wordpress.conf:/etc/nginx/common/wordpress.conf
         restart: always
         links:
             - php
             - mariadb
 
     php:
-        build: .
+        build: ./.docker/php-fpm
         container_name: php
         volumes:
+            - ./conf/php/php.ini:/usr/local/etc/php/php.ini
             - ./www:/var/www/site
 
     mariadb:
