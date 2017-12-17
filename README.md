@@ -8,7 +8,7 @@ Copy the `.env-example` file to `.env`. It contains the NGINX hostname and MySQL
 
 ```sh
 docker-compose build
-docker-compose up
+make install
 ```
 
 

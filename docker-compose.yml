@@ -27,6 +27,7 @@ services:
             - ./conf/nginx/global:/etc/nginx/global
             - ./conf/nginx/site.template.conf:/etc/nginx/conf.d/site.template
             - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./data/nginx-cache:/var/run/nginx-cache
         restart: always
         links:
             - php
@@ -38,6 +39,7 @@ services:
         volumes:
             - ./conf/php/php.ini:/usr/local/etc/php/php.ini
             - ./src:/var/www/html
+            - ./data/nginx-cache:/var/www/nginx-cache
 
     mariadb:
         image: 'bitnami/mariadb:latest'
