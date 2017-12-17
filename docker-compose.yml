@@ -24,8 +24,9 @@ services:
         command: /bin/bash -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
         volumes:
             - ./src:/var/www/html
+            - ./conf/nginx/global:/etc/nginx/global
             - ./conf/nginx/site.template.conf:/etc/nginx/conf.d/site.template
-            - ./conf/nginx/wordpress.conf:/etc/nginx/common/wordpress.conf
+            - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf
         restart: always
         links:
             - php

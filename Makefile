@@ -1,5 +1,5 @@
 # Makefile for Docker Nginx PHP Composer MySQL
-# https://github.com/nanoninja/docker-nginx-php-mysql/blob/master/Makefile
+# Ref: https://github.com/nanoninja/docker-nginx-php-mysql/blob/master/Makefile
 
 include .env
 
@@ -11,7 +11,6 @@ help:
 	@echo "usage: make COMMAND"
 	@echo ""
 	@echo "Commands:"
-	@echo "  apidoc              Generate documentation of API"
 	@echo "  code-sniff          Check the API with PHP Code Sniffer (PSR2)"
 	@echo "  clean               Clean directories for reset"
 	@echo "  composer-up         Update PHP dependencies with composer"
@@ -23,21 +22,18 @@ help:
 	@echo "  mysql-restore       Restore backup from whole database"
 	@echo "  test                Test application"
 
-init:
-	@$(shell cp -n $(shell pwd)/web/app/composer.json.dist $(shell pwd)/web/app/composer.json 2> /dev/null)
-
-apidoc:
-	@docker-compose exec -T php ./app/vendor/bin/apigen generate app/src --destination app/doc
-	@make resetOwner
+setup:
+	composer create-project roots/bedrock src
+	cd src
+	composer require wpackagist-plugin/disable-emojis
 
 clean:
-	@rm -Rf data/mariadb/*
+	@rm -Rf data/mysql/*
+	@rm -Rf data/logs/*
 	@rm -Rf $(MYSQL_DUMPS_DIR)/*
-	@rm -Rf web/app/vendor
-	@rm -Rf web/app/composer.lock
-	@rm -Rf web/app/doc
-	@rm -Rf web/app/report
-	@rm -Rf etc/ssl/*
+	@rm -Rf src/web/app/uploads/*
+	@rm -Rf src/web/app/plugins/*
+	@rm -Rf src/web/app/themes/*
 
 code-sniff:
 	@echo "Checking the standard code..."
@@ -51,7 +47,13 @@ docker-start: init
 
 docker-stop:
 	@docker-compose down -v
-	@make clean
+	# @make clean
+
+docker-ssh-php:
+	docker exec -it php /bin/bash
+
+docker-ssh-nginx:
+	docker exec -it nginx /bin/bash
 
 gen-certs:
 	@docker run --rm -v $(shell pwd)/etc/ssl:/certificates -e "SERVER=$(NGINX_HOST)" jacoelho/generate-certificate

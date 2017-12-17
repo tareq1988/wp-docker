@@ -1,4 +1,10 @@
+## Requirements
+
+* Composer - [install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+
 ## Installation
+
+Copy the `.env-example` file to `.env`. It contains the NGINX hostname and MySQL database credentials. After filling that up, run:
 
 ```sh
 docker-compose build

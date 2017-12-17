@@ -35,3 +35,8 @@ RUN buildDeps=" \
 ENV COMPOSER_HOME /root/composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
+
+# Install WP-CLI
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
