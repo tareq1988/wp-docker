@@ -1,3 +1,2 @@
-/mysql
 /.env
-/www
+/data/mysql/*

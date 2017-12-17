@@ -13,9 +13,9 @@ services:
         ports:
             - "6379:6379"
 
-    web:
+    nginx:
         image: nginx:latest
-        container_name: web
+        container_name: nginx
         ports:
             - "8080:80"
             - "3000:443"
@@ -23,7 +23,7 @@ services:
             - NGINX_HOST=${NGINX_HOST}
         command: /bin/bash -c "envsubst '$$NGINX_HOST' < /etc/nginx/conf.d/site.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
         volumes:
-            - ./www:/var/www/site
+            - ./src:/var/www/html
             - ./conf/nginx/site.template.conf:/etc/nginx/conf.d/site.template
             - ./conf/nginx/wordpress.conf:/etc/nginx/common/wordpress.conf
         restart: always
@@ -36,7 +36,7 @@ services:
         container_name: php
         volumes:
             - ./conf/php/php.ini:/usr/local/etc/php/php.ini
-            - ./www:/var/www/site
+            - ./src:/var/www/html
 
     mariadb:
         image: 'bitnami/mariadb:latest'
@@ -51,7 +51,7 @@ services:
         ports:
             - '3306:3306'
         volumes:
-            - ./mysql:/bitnami
+            - ./data/mysql:/bitnami
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
