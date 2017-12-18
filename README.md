@@ -22,7 +22,7 @@ This project use the following ports :
 | Redis      | 6379 |
 
 **PHP Extensions:**
-bcmath, bz2, calendar, iconv, intl, mbstring, mysqli, opcache, pdo_mysql, soap, zip, gd, redis
+date, libxml, openssl, pcre, sqlite3, zlib, ctype, curl, dom, fileinfo, filter, ftp, hash, iconv, json, mbstring, SPL, PDO, bz2, posix, readline, Reflection, session, SimpleXML, pdo_sqlite, standard, tokenizer, xml, xmlreader, xmlwriter, mysqlnd, bcmath, Phar, calendar, gd, intl, mysqli, pdo_mysql, redis, soap, zip, Zend
 
 ## Install prerequisites
 

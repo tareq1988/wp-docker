@@ -5,7 +5,6 @@ FROM php:fpm
 RUN buildDeps=" \
         default-libmysqlclient-dev \
         libbz2-dev \
-        libmemcached-dev \
         libsasl2-dev \
     " \
     runtimeDeps=" \
@@ -15,7 +14,6 @@ RUN buildDeps=" \
         libicu-dev \
         libjpeg-dev \
         libldap2-dev \
-        libmemcachedutil2 \
         libpng-dev \
         libpq-dev \
         libxml2-dev \
@@ -38,3 +36,4 @@ ENV PATH $COMPOSER_HOME/vendor/bin:$PATH
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
+RUN echo 'wp() { /usr/local/bin/wp "$@" --allow-root; }' >> ~/.bashrc
