@@ -22,10 +22,17 @@ help:
 	@echo "  mysql-restore       Restore backup from whole database"
 	@echo "  test                Test application"
 
-setup:
+install: install-plugins
 	composer create-project roots/bedrock src
 	cd src
+
+install-plugins:
 	composer require wpackagist-plugin/disable-emojis
+	composer require wpackagist-plugin/nginx-cache
+	composer require wpackagist-plugin/redis-cache
+	composer require wpackagist-plugin/debug-bar
+	composer require wpackagist-plugin/query-monitor
+	curl -o ./web/app/object-cache.php https://raw.githubusercontent.com/tillkruss/redis-cache/master/includes/object-cache.php
 
 clean:
 	@rm -Rf data/mysql/*
