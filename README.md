@@ -118,7 +118,7 @@ In order to take the redis cache setup complete, you've to manually add this lin
 ```
 ├── Makefile
 ├── README.md
-├── conf						# Nginx, PHP Configuration
+├── conf					# Nginx, PHP Configuration
 │   ├── mysql
 │   │   └── my.cnf
 │   ├── nginx					
@@ -127,14 +127,14 @@ In order to take the redis cache setup complete, you've to manually add this lin
 │   │   └── site.template.conf
 │   └── php
 │       └── php.ini
-├── data						# Persistant data directory
+├── data					# Persistant data directory
 │   ├── dumps/
 │   ├── logs/
 │   ├── mysql
 │   │   └── mariadb
 │   └── nginx-cache/
 ├── docker-compose.yml
-└── src							# Application Code
+└── src						# Application Code
     ├── CHANGELOG.md
     ├── CODE_OF_CONDUCT.md
     ├── LICENSE.md
@@ -142,7 +142,7 @@ In order to take the redis cache setup complete, you've to manually add this lin
     ├── composer.json
     ├── composer.lock
     ├── config
-    │   ├── application.php		# Primary wp-config.php
+    │   ├── application.php			# Primary wp-config.php
     │   └── environments
     │       ├── development.php
     │       ├── production.php
