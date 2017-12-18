@@ -1,12 +1,12 @@
 # Overview
-A simple *opinionated* PHP 7.2 Docker & Compose Environment for WordPress using Nginx, PHP-FPM, Redis, PHPMyAdmin and [Bedrock](https://github.com/roots/bedrock).
+A simple *opinionated* PHP 7.2 Docker & Compose Environment for WordPress using Nginx, PHP-FPM, Redis, PHPMyAdmin, Composer, WP CLI and [Bedrock](https://github.com/roots/bedrock).
 
 
 ## Images Used
 
 * [Nginx](https://hub.docker.com/_/nginx/) - Latest
 * [Mariadb - Bitnami](https://hub.docker.com/r/bitnami/mariadb/) - Latest
-* [PHP-FPM](https://hub.docker.com/_/php/) - Latest
+* [PHP-FPM](https://hub.docker.com/_/php/) - Latest (with composer and wp-cli)
 * [PHPMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/) - Latest
 * [Redis](https://hub.docker.com/_/redis/) - Latest
 
@@ -20,6 +20,9 @@ This project use the following ports :
 | Nginx      | 8080 |
 | Nginx SSL  | 3000 |
 | Redis      | 6379 |
+
+**PHP Extensions:**
+bcmath, bz2, calendar, iconv, intl, mbstring, mysqli, opcache, pdo_mysql, soap, zip, gd, redis
 
 ## Install prerequisites
 
