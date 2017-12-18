@@ -28,12 +28,12 @@ install:
 	composer create-project roots/bedrock src
 
 install-plugins:
-	composer require wpackagist-plugin/disable-emojis
-	composer require wpackagist-plugin/nginx-cache
-	composer require wpackagist-plugin/redis-cache
-	composer require wpackagist-plugin/debug-bar
-	composer require wpackagist-plugin/query-monitor
-	curl -o ./web/app/object-cache.php https://raw.githubusercontent.com/tillkruss/redis-cache/master/includes/object-cache.php
+	composer require wpackagist-plugin/disable-emojis --working-dir=$(shell pwd)/src
+	composer require wpackagist-plugin/nginx-cache --working-dir=$(shell pwd)/src
+	composer require wpackagist-plugin/redis-cache --working-dir=$(shell pwd)/src
+	composer require wpackagist-plugin/debug-bar --working-dir=$(shell pwd)/src
+	composer require wpackagist-plugin/query-monitor --working-dir=$(shell pwd)/src
+	curl -o $(shell pwd)/src/web/app/object-cache.php https://raw.githubusercontent.com/tillkruss/redis-cache/master/includes/object-cache.php
 
 clean:
 	@rm -Rf data/mysql/*
