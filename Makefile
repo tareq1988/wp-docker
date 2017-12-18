@@ -49,7 +49,7 @@ code-sniff:
 	@docker-compose exec -T php ./app/vendor/bin/phpcs -v --standard=PSR2 app/src
 
 composer-up:
-	@docker run --rm -v $(shell pwd)/www:/app composer update
+	@docker run --rm -v $(shell pwd)/src:/app composer update
 
 docker-start:
 	docker-compose up -d
@@ -85,4 +85,4 @@ test: code-sniff
 resetOwner:
 	@$(shell chown -Rf $(SUDO_USER):$(shell id -g -n $(SUDO_USER)) $(MYSQL_DUMPS_DIR) "$(shell pwd)/etc/ssl" "$(shell pwd)/src/web" 2> /dev/null)
 
-.PHONY: clean test code-sniff init
+# .PHONY: clean test code-sniff init

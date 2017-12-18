@@ -171,17 +171,14 @@ When developing, you can use [Makefile](https://en.wikipedia.org/wiki/Make_(soft
 
 | Name          | Description                                |
 |---------------|--------------------------------------------|
-| apidoc        | Generate documentation of API              |
+| install       | Run docker build and install bedrock       |
+| install-plugins| Install the required WP plugins           | 
 | clean         | Clean directories for reset                |
-| code-sniff    | Check the API with PHP Code Sniffer (PSR2) |
-| composer-up   | Update PHP dependencies with composer      |
 | docker-start  | Create and start containers                |
 | docker-stop   | Stop and clear all services                |
-| gen-certs     | Generate SSL certificates for `nginx`      |
 | logs          | Follow log output                          |
 | mysql-dump    | Create backup of whole database            |
 | mysql-restore | Restore backup from whole database         |
-| test          | Test application with phpunit              |
 
 ### Examples
 
