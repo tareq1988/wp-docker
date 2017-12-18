@@ -2,10 +2,6 @@ version: '3'
 
 services:
 
-    memcached:
-        image: memcached:alpine
-        container_name: memcached
-
     redis:
         image: redis:alpine
         container_name: redis

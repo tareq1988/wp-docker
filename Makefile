@@ -11,6 +11,7 @@ help:
 	@echo "usage: make COMMAND"
 	@echo ""
 	@echo "Commands:"
+	@echo "  install             Install the platform"
 	@echo "  code-sniff          Check the API with PHP Code Sniffer (PSR2)"
 	@echo "  clean               Clean directories for reset"
 	@echo "  composer-up         Update PHP dependencies with composer"
@@ -22,9 +23,9 @@ help:
 	@echo "  mysql-restore       Restore backup from whole database"
 	@echo "  test                Test application"
 
-install: install-plugins
+install:
+	@docker-compose build
 	composer create-project roots/bedrock src
-	cd src
 
 install-plugins:
 	composer require wpackagist-plugin/disable-emojis
@@ -37,6 +38,7 @@ install-plugins:
 clean:
 	@rm -Rf data/mysql/*
 	@rm -Rf data/logs/*
+	@rm -Rf data/nginx-cache/*
 	@rm -Rf $(MYSQL_DUMPS_DIR)/*
 	@rm -Rf src/web/app/uploads/*
 	@rm -Rf src/web/app/plugins/*
@@ -49,7 +51,7 @@ code-sniff:
 composer-up:
 	@docker run --rm -v $(shell pwd)/www:/app composer update
 
-docker-start: init
+docker-start:
 	docker-compose up -d
 
 docker-stop:
@@ -81,6 +83,6 @@ test: code-sniff
 	@make resetOwner
 
 resetOwner:
-	@$(shell chown -Rf $(SUDO_USER):$(shell id -g -n $(SUDO_USER)) $(MYSQL_DUMPS_DIR) "$(shell pwd)/etc/ssl" "$(shell pwd)/www/web" 2> /dev/null)
+	@$(shell chown -Rf $(SUDO_USER):$(shell id -g -n $(SUDO_USER)) $(MYSQL_DUMPS_DIR) "$(shell pwd)/etc/ssl" "$(shell pwd)/src/web" 2> /dev/null)
 
 .PHONY: clean test code-sniff init
