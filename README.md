@@ -1,5 +1,5 @@
 # Overview
-A simple PHP 7.2 Docker & Compose Environment for WordPress.
+A simple *opinionated* PHP 7.2 Docker & Compose Environment for WordPress using Nginx, PHP-FPM, Redis, PHPMyAdmin and [Bedrock](https://github.com/roots/bedrock).
 
 
 ## Images Used
@@ -118,23 +118,23 @@ In order to take the redis cache setup complete, you've to manually add this lin
 ```
 ├── Makefile
 ├── README.md
-├── conf
+├── conf						# Nginx, PHP Configuration
 │   ├── mysql
 │   │   └── my.cnf
-│   ├── nginx
-│   │   ├── global
+│   ├── nginx					
+│   │   ├── global/
 │   │   ├── nginx.conf
 │   │   └── site.template.conf
 │   └── php
 │       └── php.ini
-├── data
-│   ├── dumps
-│   ├── logs
+├── data						# Persistant data directory
+│   ├── dumps/
+│   ├── logs/
 │   ├── mysql
 │   │   └── mariadb
 │   └── nginx-cache/
 ├── docker-compose.yml
-└── src
+└── src							# Application Code
     ├── CHANGELOG.md
     ├── CODE_OF_CONDUCT.md
     ├── LICENSE.md
@@ -142,9 +142,12 @@ In order to take the redis cache setup complete, you've to manually add this lin
     ├── composer.json
     ├── composer.lock
     ├── config
-    │   ├── application.php
-    │   └── environments/
-    ├── vendor
+    │   ├── application.php		# Primary wp-config.php
+    │   └── environments
+    │       ├── development.php
+    │       ├── production.php
+    │       └── staging.php
+    ├── vendor					# Composer dependencies
     │   ├── autoload.php
     │   ├── bin/
     │   ├── composer/
@@ -154,9 +157,9 @@ In order to take the redis cache setup complete, you've to manually add this lin
     │   ├── squizlabs/
     │   └── vlucas/
     ├── web
-    │   ├── app/
+    │   ├── app/				# WordPress content directory
     │   ├── index.php
-    │   ├── wp/
+    │   ├── wp/					# WordPress core
     │   └── wp-config.php
     └── wp-cli.yml
 ```
