@@ -7,6 +7,7 @@ RUN buildDeps=" \
         libbz2-dev \
         libsasl2-dev \
 	libzip-dev \
+	libonig-dev \
     " \
     runtimeDeps=" \
         curl \
@@ -21,7 +22,7 @@ RUN buildDeps=" \
     " \
     && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y $buildDeps $runtimeDeps \
     && docker-php-ext-install bcmath bz2 calendar iconv intl mbstring mysqli opcache pdo_mysql soap zip \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install gd \
     && pecl install redis \
     && docker-php-ext-enable redis.so \
