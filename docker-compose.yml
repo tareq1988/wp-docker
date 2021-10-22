@@ -28,6 +28,8 @@ services:
         links:
             - php
             - mariadb
+        depends_on:
+            - mariadb
 
     php:
         build: ./.docker/php-fpm

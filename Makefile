@@ -56,7 +56,6 @@ docker-start:
 
 docker-stop:
 	@docker-compose down -v
-	# @make clean
 
 docker-ssh-php:
 	docker exec -it php /bin/bash
