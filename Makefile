@@ -28,11 +28,11 @@ install:
 	composer create-project roots/bedrock src
 
 install-plugins:
-	composer require wpackagist-plugin/disable-emojis --working-dir=$(shell pwd)/src
-	composer require wpackagist-plugin/nginx-cache --working-dir=$(shell pwd)/src
-	composer require wpackagist-plugin/redis-cache --working-dir=$(shell pwd)/src
-	composer require wpackagist-plugin/debug-bar --working-dir=$(shell pwd)/src
-	composer require wpackagist-plugin/query-monitor --working-dir=$(shell pwd)/src
+	@docker-compose exec -T php composer require wpackagist-plugin/disable-emojis
+	@docker-compose exec -T php composer require wpackagist-plugin/nginx-cache
+	@docker-compose exec -T php composer require wpackagist-plugin/redis-cache
+	@docker-compose exec -T php composer require wpackagist-plugin/debug-bar
+	@docker-compose exec -T php composer require wpackagist-plugin/query-monitor
 	curl -o $(shell pwd)/src/web/app/object-cache.php https://raw.githubusercontent.com/tillkruss/redis-cache/master/includes/object-cache.php
 
 clean:

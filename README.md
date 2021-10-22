@@ -1,11 +1,11 @@
 # Overview
-A simple *opinionated* PHP 7.2 Docker & Compose Environment for WordPress using Nginx, PHP-FPM, Redis, PHPMyAdmin, Composer, WP CLI and [Bedrock](https://github.com/roots/bedrock).
+A simple *opinionated* PHP 7.4 Docker & Compose Environment for WordPress using Nginx, PHP-FPM, Redis, PHPMyAdmin, Composer, WP CLI and [Bedrock](https://github.com/roots/bedrock).
 
 
 ## Images Used
 
 * [Nginx](https://hub.docker.com/_/nginx/) - Latest
-* [Mariadb - Bitnami](https://hub.docker.com/r/bitnami/mariadb/) - Latest
+* [Mariadb](https://hub.docker.com/_/mariadb) - Latest
 * [PHP-FPM](https://hub.docker.com/_/php/) - Latest (with composer and wp-cli)
 * [PHPMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/) - Latest
 * [Redis](https://hub.docker.com/_/redis/) - Latest
@@ -22,7 +22,7 @@ This project use the following ports :
 | Redis      | 6379 |
 
 **PHP Extensions:**
-date, libxml, openssl, pcre, sqlite3, zlib, ctype, curl, dom, fileinfo, filter, ftp, hash, iconv, json, mbstring, SPL, PDO, bz2, posix, readline, Reflection, session, SimpleXML, pdo_sqlite, standard, tokenizer, xml, xmlreader, xmlwriter, mysqlnd, bcmath, Phar, calendar, gd, intl, mysqli, pdo_mysql, redis, soap, zip, Zend
+date, libxml, openssl, pcre, sqlite3, zlib, ctype, curl, dom, fileinfo, filter, ftp, hash, iconv, json, mbstring, SPL, PDO, pdo_sqlite, session, posix, readline, Reflection, standard, SimpleXML, Phar, tokenizer, xml, xmlreader, xmlwriter, mysqlnd, cgi-fcgi, bcmath, exif, gd, imagick, mysqli, redis, sodium, zip
 
 ## Install prerequisites
 

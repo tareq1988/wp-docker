@@ -1,4 +1,4 @@
 /.env
-/data/mysql/mariadb/*
+/data/mysql/*
 /src
 /data/nginx-cache/*

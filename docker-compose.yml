@@ -36,9 +36,11 @@ services:
             - ./conf/php/php.ini:/usr/local/etc/php/php.ini
             - ./src:/var/www/html
             - ./data/nginx-cache:/var/www/nginx-cache
+        depends_on:
+            - mariadb
 
     mariadb:
-        image: 'bitnami/mariadb:latest'
+        image: mariadb
         container_name: mariadb
         restart: always
         environment:
@@ -50,7 +52,7 @@ services:
         ports:
             - '3306:3306'
         volumes:
-            - ./data/mysql:/bitnami
+            - ./data/mysql:/var/lib/mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
